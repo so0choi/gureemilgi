@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>북적북적</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+            integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/list.css">
+    </head>
+
+    <body>
+        <div class="body__container">
+            <header class="header">
+                <div class="icon--book">book icon</div>
+
+            </header>
+            <main>
+                <section class="section section--summary">
+                    <div class="title">좋아하는 책을 등록해보세요</div>
+                    <div class="description">
+                        하루에 한 줄의 책을 읽는 것도 도움이 됩니다
+                    </div>
+                    <form action="/add" id="add-list">
+                        <button class="btn btn--add">Add</button>
+                        <button class="btn btn--del">Delete</button>
+                    </form>
+                </section>
+            </main>
+        </div>
+        <!-- axios CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    </body>
+
+</html>

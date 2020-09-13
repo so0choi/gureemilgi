@@ -1,0 +1,33 @@
+/* HEADER */
+.header {
+  background: #3a74f3;
+  width: 100%;
+}
+.header .icon--book {
+  margin-left: 20px;
+}
+
+/*MAIN*/
+.section--summary {
+  text-align: center;
+  margin-top: 100px;
+}
+.section--summary .title {
+  font-size: 30px;
+  font-weight: 500;
+}
+.section--summary .description {
+  font-size: 18px;
+}
+#add-list {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+#add-list .btn {
+  width: 150px;
+}
+#add-list .btn:last-child {
+  margin-left: 10px;
+  background: rgb(119, 119, 119);
+}
