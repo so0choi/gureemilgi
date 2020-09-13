@@ -1,0 +1,35 @@
+.body__container {
+  font-family: "Noto Sans KR", sans-serif;
+  margin: 0 auto;
+}
+
+.section {
+  margin: 0 auto;
+  max-width: 880px;
+}
+/* BTN */
+.btn {
+  margin-top: 10px;
+  background: #3a74f3 linear-gradient(to bottom, #3a74f3, #3874f5);
+
+  color: #eee;
+  font-size: 25px;
+  border-radius: 5px;
+  height: 50px;
+  width: 100%;
+  border: 1px solid rgba(184, 184, 184, 0.2);
+}
+.btn:hover {
+  cursor: pointer;
+  color: #e5e5e5;
+  box-shadow: 0 0 10px rgba(160, 228, 255, 0.5);
+}
+
+/* BOOK ICON*/
+.header .icon--book {
+  background: url("../img/book-icon.svg");
+  width: 70px;
+  height: 70px;
+  display: block;
+  text-indent: -9999px;
+}
