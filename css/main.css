@@ -1,17 +1,16 @@
 .body__container {
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: "Noto Sans KR", "Roboto", sans-serif;
   margin: 0 auto;
 }
 
 .section {
   margin: 0 auto;
-  max-width: 880px;
 }
 /* BTN */
 .btn {
+  box-sizing: border-box;
   margin-top: 10px;
   background: #3a74f3 linear-gradient(to bottom, #3a74f3, #3874f5);
-
   color: #eee;
   font-size: 25px;
   border-radius: 5px;
