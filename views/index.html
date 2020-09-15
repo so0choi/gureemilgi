@@ -1,0 +1,36 @@
+{% extends 'layout/base.html'%}
+{% block content %}
+<header>
+    <div class="header-inner clearfix">
+        <a href="/register" class="float--right">
+            <div class="div--register">Sign up</div>
+        </a>
+    </div>
+</header>
+<main>
+    <section class="section section--login">
+        <div class="inner">
+
+            <h1 class="title">🧮북적북적🧮</h1>
+            <form action="/login" id="login-form" method="POST">
+                <ul>
+                    <li>
+                        <input type="text" class="input--text" placeholder="id" name="id">
+                    </li>
+                    <li>
+                        <input type="password" class="input--text" placeholder="password" name="password">
+                    </li>
+                    <li>
+                        <button type="submit" class="btn btn--login">Sign in</button>
+                        <button type="submit" class="btn btn--login">
+                            <div id="google-logo"></div>Sign in with Google
+                        </button>
+
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </section>
+</main>
+
+{% endblock %}
