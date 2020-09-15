@@ -1,0 +1,34 @@
+{% extends 'layout/base.html'%}
+{% block content %}
+
+<header class="header">
+    <div class="icon--book">book icon</div>
+
+</header>
+<main>
+    <a href="/">Go back</a>
+    <form action="/register" method="POST">
+        <div class="id">
+            id: <input type="text">
+        </div>
+        <div class="name">
+            name: <input type="text">
+        </div>
+        <div class="password">
+            pwd: <input type="password">
+        </div>
+        <div class="password">
+            check pwd: <input type="password">
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</main>
+</div>
+<script src="js/main.js"></script>
+<!-- axios CDN -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</body>
+
+</html>
+{%endblock%}
