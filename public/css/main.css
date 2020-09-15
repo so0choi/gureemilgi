@@ -1,11 +1,24 @@
 .body__container {
   font-family: "Noto Sans KR", "Roboto", sans-serif;
-  margin: 0 auto;
 }
 
 .section {
   margin: 0 auto;
 }
+
+/* FLOAT CLEARFIX */
+.clearfix::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+.float--left {
+  float: left;
+}
+.float--right {
+  float: right;
+}
+
 /* BTN */
 .btn {
   box-sizing: border-box;
