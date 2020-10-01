@@ -2,7 +2,7 @@
   "name": "bookjeok",
   "version": "1.0.0",
   "description": "boojeok - add your favorite book",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon -e js,html,css server.js"
@@ -11,9 +11,6 @@
     "type": "git",
     "url": "git+https://github.com/so0choi/book-jeock.git"
   },
-  "keywords": [
-    "node.js"
-  ],
   "author": "soyeong choi",
   "license": "ISC",
   "bugs": {

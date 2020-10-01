@@ -28,14 +28,14 @@ class App {
     });
   }
 
-  setMiddleware = () => {
+  setMiddleware() {
     // static asset path
     this.app.use(express.static("public"));
     this.app.use(logger("dev"));
     //bodyparser
-    this.app.use(bodyParser.urlencoded({ extended: true }));
-    this.app.use(bodyParser.json);
-  };
+    this.app.use(bodyParser.urlencoded({ extended: false }));
+    this.app.use(bodyParser.json());
+  }
 
   setLocals() {
     this.app.use((req, res, next) => {
@@ -50,12 +50,12 @@ class App {
 
   render404() {
     this.app.use((req, res) => {
-      res.status(404).render("error.html");
+      res.status(404).render("common/404.html");
     });
   }
   render500() {
     this.app.use((req, res) => {
-      res.status(500).render("error.html");
+      res.status(500).render("common/500.html");
     });
   }
 }

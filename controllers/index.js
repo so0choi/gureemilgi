@@ -1,10 +1,10 @@
 const { Router } = require("express");
 const router = Router();
 
-router.use("/", (req, res) => {
-  res.renderr("index.html");
+router.get("/", (req, res) => {
+  res.render("index.html");
 });
-
-router.use("/register", require("./register"));
+router.use("/login", require("./user/login"));
+router.use("/signup", require("./user/signup"));
 
 module.exports = router;
