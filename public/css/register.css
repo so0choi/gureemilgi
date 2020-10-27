@@ -1,0 +1,6 @@
+.p_checkpwd {
+  color: red;
+}
+.p_checkpwd .correct {
+  color: green;
+}
