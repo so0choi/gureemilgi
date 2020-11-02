@@ -19,10 +19,23 @@ function createUser(id, pwd, name) {
 }
 
 exports.post_signup = (req, res) => {
-  console.log(req.body);
-  const { id, pwd, name } = req.body;
+  const { inputId, inputPwd, checkpwd, inputName } = req.body;
+  
   if (createUser(id, pwd, name)) {
     console.log("success");
     res.render("register.html");
   }
 };
+
+exports.post_checkId = (req, res) => {
+  const inputId = req.body.inputId || '';
+  const sql = `select * from users where userid = ?`;
+  getConnection((conn => {
+    conn.query(sql, inputId, (err, result) => {
+      conn.release();
+      if (err) console.error('ID 중복 검사 에러:',err);
+      if (result[0]) res.json({result: false}); //중복
+      else res.json({result: true}); //사용가능
+    })
+  }))
+}

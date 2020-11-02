@@ -9,18 +9,21 @@
     <a href="/">Go back</a>
     <form action="/signup" method="POST">
         <div class="id">
-            id: <input type="text" name="id">
+            id: <input type="text" name="inputId" placeholder="4-12자리 영소문자/숫자" class="input--id">
+            <button id="btn--checkIdDuplite">중복체크</button>
+            <p class="p--checkId p--check"></p>
+
         </div>
         <div class="name">
-            name: <input type="text" name="name">
+            name: <input type="text" name="inputName">
         </div>
         <div class="password">
-            pwd: <input class="input--password"type="password" name="pwd">
-            
+            pwd: <input class="input--password" type="password" name="inputPwd">
+
         </div>
         <div class="password">
             check pwd: <input class="input--password" type="password" name="checkpwd">
-            <p class="p_checkpwd"></p>
+            <p class="p--checkpwd p--check"></p>
         </div>
         <button type="submit">Submit</button>
     </form>
@@ -32,10 +35,38 @@
 
 </body>
 <script type="text/javascript">
-    const p_checkpwd = document.querySelector('.p_checkpwd');
-    const pwds= document.querySelectorAll('.input--password');
-    function checkPwd(){
-        if (pwds[0].value !== pwds[1].value){
+    const p_checkpwd = document.querySelector('.p--checkpwd');
+    const pwds = document.querySelectorAll('.input--password');
+    const p_checkId = document.querySelector('.p--checkId');
+    const btn_idValidCheck = document.querySelector('#btn--checkIdDuplite');
+    const input_Id = document.querySelector('.input--id');
+
+    let ifIdValid = false;
+    btn_idValidCheck.addEventListener('click', idValidCheck);
+    function idValidCheck(e) {
+        e.preventDefault();
+        const idValidCheckUrl = 'http://localhost:3000/signup/idvalid'
+        fetch(idValidCheckUrl, {
+            method: 'POST',
+            body: { 'inputId': input_Id.value }
+        })
+            .then(res => res.json())
+            .then(res => {
+                console.log(res);
+            })
+    }
+
+    // id 정규표현식 확인
+    function checkIdValid() {
+        const idReg = /^[a-z0-9]{3,11}$/g;
+        if (!idReg.test(inputId)) {
+            p_checkId.innerText = '아이디는 4-12 자리 영소문자 또는 숫자만 사용 가능합니다.'
+            p_checkId.classList.add('correct');
+        }
+    }
+
+    function checkPwd() {
+        if (pwds[0].value !== pwds[1].value) {
             p_checkpwd.innerText = '비밀번호가 일치하지 않습니다.';
             pwds[1].value = '';
         }
@@ -44,9 +75,12 @@
             p_checkpwd.classList.add('correct');
         }
 
-    
+
     }
     pwds[1].addEventListener('change', checkPwd);
+
+
 </script>
+
 </html>
 {%endblock%}

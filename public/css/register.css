@@ -1,6 +1,6 @@
-.p_checkpwd {
+.p--check {
   color: red;
 }
-.p_checkpwd .correct {
+.p--check .correct {
   color: green;
 }
