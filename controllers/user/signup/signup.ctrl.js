@@ -6,7 +6,7 @@ exports.get_signup = (req, res) => {
 
 function createUser(id, pwd, name) {
   return new Promise((resolve, reject) => {
-    let sql = `INSERT INTO USER(id, pwd, name) VALUES ('${id}','${pwd}','${name}');`;
+    let sql = `INSERT INTO USERS(id, pwd, name) VALUES ('${id}','${pwd}','${name}');`;
     console.log(sql);
     getConnection((conn) => {
       conn.query(sql, (err, result) => {
@@ -19,9 +19,9 @@ function createUser(id, pwd, name) {
 }
 
 exports.post_signup = (req, res) => {
-  const { inputId, inputPwd, checkpwd, inputName } = req.body;
+  const { inputId, inputPwd, inputName } = req.body;
   
-  if (createUser(id, pwd, name)) {
+  if (createUser(inputId, inputPwd, inputName)) {
     console.log("success");
     res.render("register.html");
   }

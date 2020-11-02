@@ -52,7 +52,13 @@
         })
             .then(res => res.json())
             .then(res => {
-                console.log(res);
+                if (res.result === false) {// 중복인경우
+                    p_checkId.innerText = '이미 사용중인 아이디 입니다.'
+                }
+                else {
+                    p_checkId.innerText = '사용 가능한 아이디 입니다.'
+                    p_checkId.classList.add('correct');
+                }
             })
     }
 
