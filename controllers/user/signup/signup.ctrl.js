@@ -1,13 +1,12 @@
 const getConnection = require("../../db");
 
 exports.get_signup = (req, res) => {
-  res.render("register.html");
+  res.render("register.html", {isRegister: false});
 };
 
 function createUser(id, pwd, name) {
   return new Promise((resolve, reject) => {
-    let sql = `INSERT INTO USERS(id, pwd, name) VALUES ('${id}','${pwd}','${name}');`;
-    console.log(sql);
+    let sql = `INSERT INTO USERS(userid, password, name) VALUES ('${id}','${pwd}','${name}');`;
     getConnection((conn) => {
       conn.query(sql, (err, result) => {
         conn.release();
@@ -21,9 +20,12 @@ function createUser(id, pwd, name) {
 exports.post_signup = (req, res) => {
   const { inputId, inputPwd, inputName } = req.body;
   
+  //회원가입 성공
   if (createUser(inputId, inputPwd, inputName)) {
-    console.log("success");
-    res.render("register.html");
+    res.render('/signup', {isRegister: false});
+  }
+  else {
+    res.render('/signup', {isRegister: false});
   }
 };
 

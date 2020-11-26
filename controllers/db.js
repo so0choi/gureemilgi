@@ -6,7 +6,6 @@ let pool = mysql.createPool(config);
 const getConnection = (callback) => {
   pool.getConnection((err, conn) => {
     if (!err) {
-      console.log("DB connected");
       callback(conn);
     } else {
       throw err;
