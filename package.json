@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/so0choi/book-jeock#readme",
   "dependencies": {
+    "crypto": "^1.0.1",
     "express": "^4.17.1",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
