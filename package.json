@@ -19,10 +19,14 @@
   "homepage": "https://github.com/so0choi/book-jeock#readme",
   "dependencies": {
     "crypto": "^1.0.1",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "global": "^4.4.0",
     "morgan": "^1.10.0",
-    "mysql": "^2.18.1",
+    "mysql2": "^2.2.5",
     "nunjucks": "^3.2.2",
+    "sequelize": "^6.5.0",
+    "sequelize-cli": "^6.2.0",
     "tailwindcss": "^2.0.1"
   }
 }

@@ -2,12 +2,11 @@ const express = require("express");
 const nunjucks = require("nunjucks");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
-const config = require("./config.json");
 
 class App {
   constructor() {
     this.app = express();
-    this.setConfigure();
+    this.dbConnection();
     this.setViewEngine();
     this.setMiddleware();
     this.setLocals();
@@ -16,9 +15,21 @@ class App {
     this.render500();
   }
 
-  setConfigure() {
-    this.app.set("port", config.port);
-    this.app.set("dbConfig", config.mysql);
+  dbConnection() {
+    const db = require("./controllers/db");
+    // DB authentication
+    db.sequelize
+      .authenticate()
+      .then(() => {
+        console.log("Connection has been established successfully.");
+        // return db.sequelize.sync();
+      })
+      .then(() => {
+        console.log("DB Sync complete.");
+      })
+      .catch((err) => {
+        console.error("Unable to connect to the database:", err);
+      });
   }
 
   setViewEngine() {

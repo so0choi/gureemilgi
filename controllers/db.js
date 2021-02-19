@@ -1,7 +1,7 @@
-const mysql = require("mysql");
-const config = require("../config.json").mysql;
-
-let pool = mysql.createPool(config);
+const mysql = require("mysql2");
+let pool = mysql.createPool({
+  process.env.
+});
 
 const connection = () => {
   return new Promise((resolve, reject) => {
@@ -10,7 +10,7 @@ const connection = () => {
       const query = (sql, binding) => {
         return new Promise((resolve, reject) => {
           conn.query(sql, binding, (err, result) => {
-            if(err) reject(err);
+            if (err) reject(err);
             resolve(result);
           });
         });
@@ -18,15 +18,14 @@ const connection = () => {
 
       const release = () => {
         return new Promise((resolve, reject) => {
-          if(err) reject(err);
+          if (err) reject(err);
           console.log("MySQL connection pool released");
           resolve(connection.release());
         });
       };
       resolve({ query, release });
     });
-  })
-  
+  });
 };
 
 const query = (sql, binding) => {
@@ -36,6 +35,6 @@ const query = (sql, binding) => {
       resolve(result);
     });
   });
-}
+};
 
-module.exports = {pool, connection, query };
+module.exports = { pool, connection, query };
