@@ -10,6 +10,7 @@ class App {
     this.setDbConnection();
     this.setViewEngine();
     this.setMiddleware();
+    this.setStatic();
     this.setLocals();
     this.getRouting();
     this.render404();
@@ -32,20 +33,21 @@ class App {
       });
   }
 
-  setViewEngine() {
-    nunjucks.configure("views", {
-      autoescape: true,
-      express: this.app,
-    });
-  }
-
   setMiddleware() {
-    // static asset path
-    this.app.use(express.static("public"));
     this.app.use(logger("dev"));
     //bodyparser
     this.app.use(bodyParser.urlencoded({ extended: false }));
     this.app.use(bodyParser.json());
+  }
+  setViewEngine() {
+    nunjucks.configure("public/views", {
+      autoescape: true,
+      express: this.app,
+    });
+  }
+  setStatic() {
+    this.app.use(express.static("public"));
+    this.app.use("/user", express.static("public"));
   }
 
   setLocals() {

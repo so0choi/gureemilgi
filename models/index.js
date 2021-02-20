@@ -16,14 +16,12 @@ sequelize = new Sequelize(
   process.env.DATABASE,
   process.env.DB_USER,
   process.env.DB_PASSWORD,
-
   {
     dialect: "mysql",
     timezone: "+09:00",
     pool: {
       max: 5,
       min: 0,
-
       idle: 1000,
     },
   }
