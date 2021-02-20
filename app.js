@@ -2,11 +2,12 @@ const express = require("express");
 const nunjucks = require("nunjucks");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
+const db = require("./models");
 
 class App {
   constructor() {
     this.app = express();
-    this.dbConnection();
+    this.setDbConnection();
     this.setViewEngine();
     this.setMiddleware();
     this.setLocals();
@@ -15,8 +16,7 @@ class App {
     this.render500();
   }
 
-  dbConnection() {
-    const db = require("./controllers/db");
+  setDbConnection() {
     // DB authentication
     db.sequelize
       .authenticate()

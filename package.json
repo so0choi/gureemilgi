@@ -1,7 +1,7 @@
 {
-  "name": "bookjeok",
+  "name": "gureemilgi",
   "version": "1.0.0",
-  "description": "boojeok - add your favorite book",
+  "description": "Gureemilgi - draw your today",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
