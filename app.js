@@ -23,7 +23,7 @@ class App {
       .authenticate()
       .then(() => {
         console.log("Connection has been established successfully.");
-        // return db.sequelize.sync();
+        return db.sequelize.sync();
       })
       .then(() => {
         console.log("DB Sync complete.");
@@ -47,7 +47,6 @@ class App {
   }
   setStatic() {
     this.app.use(express.static("public"));
-    this.app.use("/user", express.static("public"));
   }
 
   setLocals() {
