@@ -12,15 +12,22 @@ exports.get_register_page = (_, res) => {
   res.render("register.html");
 };
 
-// exports.post_validation = async (req, res) => {
-//   const { email } = req.body;
-//   const checkEmailValidation = await db.User.findOne({ where: { email } });
-//   if (checkEmailValidation) {
-//     res.send(JSON.stringify({ result: false }));
-//   } else {
-//     res.send(JSON.stringify({ result: true }));
-//   }
-// };
+exports.post_validation = async (req, res) => {
+  const { email } = req.body;
+  db.User.findOne({
+    where: { email },
+    attributes: ["id"],
+    raw: true,
+  })
+    .then((user) => {
+      console.dir(user);
+      if (user !== null && user !== undefined) {
+        console.log(user);
+        res.json({ result: false });
+      } else res.json({ result: true });
+    })
+    .catch((err) => console.error(err));
+};
 
 exports.post_register = async (req, res) => {
   const { name, email, password } = req.body;
