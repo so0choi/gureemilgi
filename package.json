@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/so0choi/book-jeock#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "crypto": "^1.0.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",

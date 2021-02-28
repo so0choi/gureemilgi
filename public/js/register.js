@@ -11,27 +11,27 @@ const init = () => {
   let isEmailChecked = false;
   btnValidation.addEventListener("click", async (evt) => {
     evt.preventDefault();
-    try {
-      let result = await fetch("/user/validation", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email: email.value }),
+    axios
+      .post(
+        "/user/validation",
+
+        { email: email.value }
+      )
+      .then((res) => {
+        const result = res.data.result;
+        if (result) {
+          alert("You can use this email");
+          btnSubmit.disabled = false;
+        } else {
+          alert("This email is already in use");
+          email.value = "";
+          isEmailChecked = false;
+          btnSubmit.disabled = true;
+        }
+      })
+      .catch((err) => {
+        console.error("FETCH ERROR >> ", err);
       });
-      console.log(result.body);
-      if (result.body.result) {
-        alert("You can use this email");
-        btnSubmit.disabled = false;
-      } else {
-        alert("This email is already in use");
-        email.value = "";
-        isEmailChecked = false;
-        btnSubmit.disabled = true;
-      }
-    } catch (err) {
-      console.error("FETCH ERROR >> ", err);
-    }
   });
 
   const verifyPassword = () => {
