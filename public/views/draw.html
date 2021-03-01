@@ -1,0 +1,27 @@
+{% extends "./layout/base.html"%}
+
+{% block content %}
+<style>
+    .col {
+  width: 50px;
+  height: 50px;
+}
+
+</style>
+<div>
+<canvas id="drawingCanvas" class="rounded-md border-2 border-solid border-black" width="800px" height="500px"></canvas>
+
+<button id="clearBtn" type="button" class="focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-blue-500 hover:bg-blue-600 hover:shadow-lg">Clear All</button>
+<button id="clearBtn" type="button" class="focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-blue-500 hover:bg-blue-600 hover:shadow-lg">Save</button>
+</div>
+<div id="palette" class="flex">
+    <div id="col-1" class="bg-red-600 col"></div>
+    <div id="col-2" class="bg-yellow-300 col"></div>
+    <div id="col-3" class="bg-green-600 col"></div>
+    <div id="col-4" class="bg-blue-700 col"></div>
+    <div id="col-5" class="bg-black col"></div>
+</div>
+
+<script src="/js/draw.js"></script>
+
+{% endblock %}
