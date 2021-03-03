@@ -1,7 +1,9 @@
-const { Router } = require("express");
+import Router from "express";
+
 const router = Router();
 const ctrl = require("./user.ctrl");
 
+// TODO: make class
 router.get("/register", ctrl.get_register_page);
 router.post("/register", ctrl.post_register);
 router.get("/login", ctrl.get_login_page);

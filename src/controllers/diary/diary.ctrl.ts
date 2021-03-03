@@ -1,4 +1,4 @@
-const db = require("../../models");
+const db = require("../../../models");
 
 exports.get_diary_list_page = async (req, res, next) => {
   res.render("diary.html");

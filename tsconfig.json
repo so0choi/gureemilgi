@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "outDir": "./built",
+    "baseUrl": "./src",
+    "allowJs": false,
+    "target": "es5"
+  },
+  "include": ["./src/**/*.ts"],
+  "exclude": ["node_modules"]
+}

@@ -28,6 +28,7 @@
     "nunjucks": "^3.2.2",
     "sequelize": "^6.5.0",
     "sequelize-cli": "^6.2.0",
-    "tailwindcss": "^2.0.1"
+    "tailwindcss": "^2.0.1",
+    "ts-node": "^9.1.1"
   }
 }

@@ -1,10 +1,13 @@
-const express = require("express");
-const nunjucks = require("nunjucks");
-const bodyParser = require("body-parser");
+import * as express from "express";
+import * as bodyParser from "body-parser";
+import * as nunjucks from "nunjucks";
+
 const logger = require("morgan");
 const db = require("./models");
 
 class App {
+  public app: express.Application;
+
   constructor() {
     this.app = express();
     this.setDbConnection();
@@ -17,7 +20,7 @@ class App {
     this.render500();
   }
 
-  setDbConnection() {
+  private setDbConnection() {
     // DB authentication
     db.sequelize
       .authenticate()
@@ -33,43 +36,49 @@ class App {
       });
   }
 
-  setMiddleware() {
+  private setMiddleware() {
     this.app.use(logger("dev"));
     //bodyparser
     this.app.use(bodyParser.urlencoded({ extended: false }));
     this.app.use(bodyParser.json());
   }
-  setViewEngine() {
+  private setViewEngine() {
     nunjucks.configure("public/views", {
       autoescape: true,
       express: this.app,
     });
   }
-  setStatic() {
+  private setStatic() {
     this.app.use(express.static("public"));
   }
 
-  setLocals() {
+  private setLocals() {
     this.app.use((req, res, next) => {
       this.app.locals.isLogin = false;
       next();
     });
   }
 
-  getRouting() {
+  private getRouting() {
     this.app.use(require("./controllers"));
   }
 
-  render404() {
+  private render404() {
     this.app.use((req, res) => {
       res.status(404).render("common/404.html");
     });
   }
-  render500() {
+  private render500() {
     this.app.use((req, res) => {
       res.status(500).render("common/500.html");
     });
   }
+
+  public listen() {
+    this.app.listen(process.env.PORT || 3000, () => {
+      console.log("Express is listening on port", process.env.PORT || 3000);
+    });
+  }
 }
 
-module.exports = new App().app;
+export default App;
